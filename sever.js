@@ -3,7 +3,7 @@ const app = express()
 require("dotenv").config()
 const cors = require("cors")
 
-const PORT = 8000
+const PORT = process.env.PORT ||8000
 const authRoute = require("./routes/auth")
 const postsRoute = require("./routes/posts")
 const usersRoute = require("./routes/users")
