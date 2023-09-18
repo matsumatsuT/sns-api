@@ -1,0 +1,81 @@
+
+# TODO テスト書きなので見直しと更新
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Qitta Prism Sample
+  description: A sample API for qiita.
+servers:
+  - url: 'http://localhost:8000'
+    description: 開発環境
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - id
+        - username
+        - email
+        - password
+        - posts
+      properties:
+        name:
+          type: string
+          description: ユーザー名
+        email:
+          type: string
+          description: メールアドレス
+        password:
+          type: string
+          description: パスワード
+      example:
+        name: test
+        email:
+    Post:
+      type: object
+      required:
+        - id
+        - content
+        - createdAt
+        - authorId
+        - author
+      properties:
+        content:
+          type: string
+          description: 投稿内容
+        createdAt:
+          type: string
+          description: 投稿日時
+        authorId:
+          type: string
+          description: 投稿者ID
+        author:
+          $ref: '#/components/schemas/User'
+          description: ユーザ情報
+
+
+paths:
+  /api/auth/register/:
+    post:
+      summary: Register a new user
+      operationId: registerUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        200:
+          description: OK
+  /api/auth/login/:
+    post:
+      summary: Login
+      operationId: loginUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        200:
+          description: OK
