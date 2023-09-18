@@ -1,6 +1,4 @@
-## SNSクローン
-udemy講座</br>
-https://www.udemy.com/course/fullstack-sns-development/
+# SNSクローン
 
 ## 成果物
 https://sns-client-five.vercel.app/
